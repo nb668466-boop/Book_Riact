@@ -429,3 +429,104 @@
   letter-spacing: 0.4px;
   opacity: 1;
 }
+
+.HighRating {
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 56px 60px 52px 70px;
+  font-family: 'Poppins', sans-serif;
+  color: #f6e4c1;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 15% 0%, rgba(217,168,78,0.28), transparent 45%),
+    linear-gradient(160deg, #7a1930 0%, #2a0a14 55%, #1d4a33 100%);
+  border-bottom: 2px solid #b8893a;
+  box-shadow: -10px 0 0 rgba(0,0,0,0.25) inset, 0 0 60px rgba(217,168,78,0.25);
+}
+
+.HighRating .shine {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 30%, rgba(255,220,130,0.25) 50%, transparent 70%);
+  background-size: 250% 100%;
+  animation: sweep 5s linear infinite;
+  pointer-events: none;
+}
+@keyframes sweep { from { background-position: 150% 0; } to { background-position: -100% 0; } }
+
+.HighRating h1 {
+  position: relative;
+  margin: 0 0 8px;
+  font-weight: 800;
+  font-size: clamp(32px, 5vw, 64px);
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #b8893a, #ffe9a8, #d9a84e, #b8893a);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gold 4s linear infinite;
+}
+@keyframes gold { to { background-position: 300% 0; } }
+
+.HighRating .list {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 22px;
+  margin-top: 30px;
+  counter-reset: rank;
+}
+
+.HighRating .list p {
+  position: relative;
+  counter-increment: rank;
+  margin: 0;
+  padding: 22px 22px 22px 76px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #f3efe3;
+  background: rgba(0,0,0,0.32);
+  border: 1px solid rgba(217,168,78,0.45);
+  border-radius: 4px 12px 12px 4px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.HighRating .list p::before {
+  content: counter(rank);
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  font-size: 20px;
+  font-weight: 800;
+  color: #2a1208;
+  background: linear-gradient(135deg, #ffe9a8, #d9a84e);
+  border-radius: 50%;
+  box-shadow: 0 0 18px rgba(217,168,78,0.7);
+}
+
+.HighRating .list p:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 0 30px rgba(255,209,102,0.5);
+}
+
+.HighRating .list p span {
+  display: block;
+}
+
+.HighRating .list p .book-name {
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.HighRating .list p .book-rating {
+  margin-top: 4px;
+  font-size: 14px;
+  color: #ffd166;
+}

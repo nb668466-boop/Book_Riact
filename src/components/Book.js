@@ -1,11 +1,12 @@
 import './Book.css';
 import { useState } from 'react';
 function Book(props) {
-    const {name,code, price,discount,quantity,author,Category} = props;
+    const {name,code, price,discount,quantity,author,Category,rating,setBook} = props;
     Book.defaultProps = { author:"anonymous" }
     const[color, colorcheng] = useState(false);
     const[stoc_quantity,fun_quantity]=useState(quantity);
     const[Delete,setDelete]=useState(true);
+   
     if (Delete){
    return (<div className={quantity === 0 ? "gray" :discount > 50? "expensive": "clas" }>
       <h1 >Book</h1>
@@ -36,9 +37,31 @@ function Book(props) {
         )}
 
         <button  className="delete-btn" onClick={(e)=>setDelete(d=>!d)}>Delete!</button>
+        
+<div dir="ltr">
+  {[1, 2, 3, 4, 5].map((n) => (
+    <span
+      key={n}
+      onClick={() =>
+        setBook(prev =>
+          [...prev].map(b => (b.code === code ? { ...b, rating: n } : b))
+        )
+      }
+      style={{ cursor: "pointer", fontSize: 32, color: n <= rating ? "gold" : "#ccc" }}
+    >
+      ★
+    </span>
+  ))}
+
+
+
+</div>  
+
        
 
       </div>
+      
+      
 
 
     );
